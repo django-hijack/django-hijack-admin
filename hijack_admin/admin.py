@@ -42,7 +42,12 @@ class HijackUserAdminMixin(object):
 class HijackRelatedAdminMixin(HijackUserAdminMixin):
 
     def hijack_field(self, obj):
-        return super(HijackRelatedAdminMixin, self).hijack_field(obj.user)
+        user = getattr(obj, 'user', '')
+        if not user:
+            for field in obj._meta.get_fields():
+                if (field.one_to_one or field.many_to_one) and getattr(field, 'related_model') == get_user_model():
+                    user = getattr(obj, field.name)
+        return super(HijackRelatedAdminMixin, self).hijack_field(user)
 
 
 class HijackUserAdmin(HijackUserAdminMixin, UserAdmin):
