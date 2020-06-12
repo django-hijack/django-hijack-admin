@@ -26,9 +26,6 @@ INSTALLED_APPS = (
 )
 ```
 
-For the admin integration to work, you must explicitly set `HIJACK_ALLOW_GET_REQUESTS = True` in your project settings.
-Please be aware that users can now be hijacked not only using POST requests, but also using GET requests, which could facilitate CSRF attacks.
-
 ## Configuration
 
 ### `HIJACK_BUTTON_TEMPLATE`

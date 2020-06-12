@@ -102,5 +102,3 @@ SECRET_KEY = 'foobar'
 LANGUAGE_CODE = 'en-us'
 USE_I18N = True
 USE_L10N = True
-
-HIJACK_ALLOW_GET_REQUESTS = True

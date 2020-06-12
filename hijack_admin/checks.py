@@ -1,11 +1,9 @@
 # -*- coding: utf-8 -*-
-from django.core.checks import Error, Warning, register
+from django.core.checks import Warning, register
 from django.conf.global_settings import AUTH_USER_MODEL as DEFAULT_AUTH_USER_MODEL
 from django.conf import settings
 from django.contrib import admin
 from django.contrib.auth import get_user_model
-
-from hijack import settings as hijack_settings
 
 
 def _using_hijack_admin_mixin():
@@ -18,20 +16,6 @@ def _using_hijack_admin_mixin():
             admin.site._registry.get(get_user_model(), None))
 
     return issubclass(user_admin_class, HijackUserAdminMixin)
-
-
-def check_get_requests_allowed(app_configs, **kwargs):
-    errors = []
-    if not hijack_settings.HIJACK_ALLOW_GET_REQUESTS:
-        errors.append(
-            Error(
-                'Hijack GET requests must be allowed for django-hijack-admin to work.',
-                hint='Set HIJACK_ALLOW_GET_REQUESTS to True.',
-                obj=None,
-                id='hijack_admin.E001',
-            )
-        )
-    return errors
 
 
 def check_custom_user_model(app_configs, **kwargs):
@@ -51,7 +35,6 @@ def check_custom_user_model(app_configs, **kwargs):
 
 def register_checks():
     for check in [
-        check_get_requests_allowed,
         check_custom_user_model,
     ]:
         register(check)

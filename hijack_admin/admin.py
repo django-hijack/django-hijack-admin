@@ -18,6 +18,10 @@ except ImportError:
 
 class HijackUserAdminMixin(object):
 
+    def changelist_view(self, request, *args, **kwargs):
+        self.__request = request
+        return super().changelist_view(request, *args, **kwargs)
+
     def hijack_field(self, obj):
         hijack_attributes = hijack_settings.HIJACK_URL_ALLOWED_ATTRIBUTES
 
@@ -34,7 +38,7 @@ class HijackUserAdminMixin(object):
             'username': str(obj),
         }
 
-        return button_template.render(button_context)
+        return button_template.render(button_context, request=self.__request)
 
     hijack_field.short_description = _('Hijack user')
 

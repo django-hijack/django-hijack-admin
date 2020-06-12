@@ -1,5 +1,9 @@
 {% load i18n %}
 
-<a href="{{ hijack_url }}" class="button">
-    {% blocktrans %}Hijack {{ username }}{% endblocktrans %}
-</a>
+<form action="{{ hijack_url }}" method="post">
+    {% csrf_token %}
+    <button type="submit" class="button">
+	    {% blocktrans %}Hijack {{ username }}{% endblocktrans %}
+    </button>
+</form>
+
