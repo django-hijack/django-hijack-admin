@@ -1,3 +1,11 @@
+![No longer maintained](https://img.shields.io/badge/Maintenance-OFF-red.svg)
+### [DEPRECATED] django-hijack-admin is no longer maintained
+> After the [changes](https://github.com/django-hijack/django-hijack/pull/235) in [django-hijack](https://github.com/django-hijack/django-hijack) version 3.0, the integration of the admin is part of it.
+> 
+> The changes made in django-hijack are fully focused on security and at the moment there is no objective reasons to keep the admin integration in a separate package.
+
+
+
 # django-hijack-admin
 
 Django admin integration for Django Hijack (https://github.com/arteria/django-hijack/)
