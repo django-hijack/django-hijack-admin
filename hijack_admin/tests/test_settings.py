@@ -91,7 +91,6 @@ INSTALLED_APPS = [
     'django.contrib.sites',
 
     'django_nose',
-    'compat',
     'hijack',
     'hijack_admin',
     'hijack_admin.tests.test_app',

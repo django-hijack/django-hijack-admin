@@ -1,10 +1,10 @@
 # -*- coding: utf-8 -*-
-from compat import get_user_model
+from django.contrib.auth import get_user_model
 from django import VERSION
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
 from django.template.loader import get_template
-from django.utils.translation import ugettext_lazy as _
+from django.utils.translation import gettext_lazy as _
 
 from hijack import settings as hijack_settings
 

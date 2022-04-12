@@ -1,2 +1,1 @@
 django-hijack>=2.1.5
-django-compat>=1.0.13

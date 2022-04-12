@@ -1,5 +1,5 @@
 """URLs to run the tests."""
-from compat import include, url
+from from django.urls import include, re_path
 
 from django.contrib import admin
 
@@ -15,7 +15,7 @@ class RelatedModelAdmin(HijackRelatedAdminMixin, admin.ModelAdmin):
 admin.autodiscover()
 
 urlpatterns = [
-    url(r'^admin/', admin.site.urls),
-    url(r'^hijack/', include('hijack.urls', namespace='hijack')),
-    url(r'^hello/', include('hijack.tests.test_app.urls', namespace='test_app'))
+    re_path(r'^admin/', admin.site.urls),
+    re_path(r'^hijack/', include('hijack.urls', namespace='hijack')),
+    re_path(r'^hello/', include('hijack.tests.test_app.urls', namespace='test_app'))
 ]
